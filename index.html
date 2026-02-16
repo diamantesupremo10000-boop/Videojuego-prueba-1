@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Resonancias del Espíritu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div id="ui-layer">
+        <h1>Resonancias del Espíritu</h1>
+        <p id="score">Cualidades encontradas: 0 / 9</p>
+        <p id="message">Usa W, A, S, D o las flechas para explorar y encontrar gemas de sabiduría.</p>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="game.js"></script>
+    <script>
+        // Registrar el Service Worker para funcionamiento Offline
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registrado con éxito.', reg))
+                    .catch(err => console.error('Error al registrar el Service Worker.', err));
+            });
+        }
+    </script>
+</body>
+</html>
